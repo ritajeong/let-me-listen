@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">letmelisten</string>
+    <string name="app_name">Let me listen</string>
+    <string name="button1">실내모드</string>
+    <string name="textview1">가전기기, 화재경보음</string>
+    <string name="button2">실외모드</string>
+    <string name="textview2">자동차 경적, 화재경보음, 개 짖는 소리</string>
+    <string name="setting">SETTING</string>
 </resources>
