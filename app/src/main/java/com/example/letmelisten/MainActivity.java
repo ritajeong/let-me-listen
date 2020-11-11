@@ -5,13 +5,16 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
     String[] permission_list = {
             Manifest.permission.RECORD_AUDIO
     };
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkPermission();
+
+
     }
     public void checkPermission() {
         //현재 안드로이드 버전이 6.0미만이면 메서드를 종료
@@ -56,4 +61,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button1:
+                break;
+            case R.id.button2:
+                break;
+            case R.id.button3:
+                break;
+        }
+    }
 }

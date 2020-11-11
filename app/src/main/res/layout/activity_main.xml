@@ -21,7 +21,8 @@
             android:text="@string/button1"
             app:backgroundTint="@color/purple_200"
             tools:layout_editor_absoluteX="159dp"
-            tools:layout_editor_absoluteY="228dp" />
+            tools:layout_editor_absoluteY="228dp"
+            android:onClick="onClick"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +41,8 @@
             android:text="@string/button2"
             app:backgroundTint="@color/purple_200"
             tools:layout_editor_absoluteX="160dp"
-            tools:layout_editor_absoluteY="441dp" />
+            tools:layout_editor_absoluteY="441dp"
+            android:onClick="onClick"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,11 +63,12 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/button3"
             android:layout_width="46dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:srcCompat="@android:drawable/ic_menu_manage"
-            android:contentDescription="@string/setting" />
+            android:contentDescription="@string/setting"
+            android:onClick="onClick" />
     </LinearLayout>
 </LinearLayout>
