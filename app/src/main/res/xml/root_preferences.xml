@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="장치관리">
+        <SwitchPreferenceCompat
+            app:key="switch_mic"
+            app:title="휴대폰 마이크 켜기"
+            app:defaultValue="true"  />
+        <EditTextPreference
+            app:key="device_setting"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="reply"
+            app:entries="@array/reply_entries"
+            app:entryValues="@array/reply_values"
+            app:key="reply"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
+
+</PreferenceScreen>

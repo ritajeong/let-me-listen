@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -26,8 +27,31 @@ public class MainActivity extends AppCompatActivity {
 
         checkPermission();
 
+        Button button1 = findViewById(R.id.button1);
+        Button button2 = findViewById(R.id.button2);
+        ImageButton button3 = findViewById(R.id.button3);
 
+        Button.OnClickListener onClickListener = new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.button1:
+                        break;
+                    case R.id.button2:
+                        break;
+                    case R.id.button3:
+                       Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+                       startActivity(intent);
+                        break;
+                }
+            }
+        };
+
+        button1.setOnClickListener(onClickListener);
+        button2.setOnClickListener(onClickListener);
+        button3.setOnClickListener(onClickListener);
     }
+
     public void checkPermission() {
         //현재 안드로이드 버전이 6.0미만이면 메서드를 종료
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
@@ -58,17 +82,6 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        }
-    }
-
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.button1:
-                break;
-            case R.id.button2:
-                break;
-            case R.id.button3:
-                break;
         }
     }
 }
