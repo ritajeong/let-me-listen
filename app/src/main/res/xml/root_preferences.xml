@@ -1,74 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory app:title="장치관리">
         <SwitchPreferenceCompat
+            android:defaultValue="true"
             app:key="mic"
-            app:title="휴대폰 마이크 켜기"
-            android:defaultValue="true"/>
+            app:title="휴대폰 마이크 켜기" />
         <Preference
+            app:fragment="com.app."
             app:key="input_device"
-            app:title="녹음장치 관리"/>
+            app:title="녹음장치 관리" />
         <Preference
             app:key="output_device"
-            app:title="출력장치 관리"/>
+            app:title="출력장치 관리" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="주변환경 설정">
         <SwitchPreferenceCompat
+            android:defaultValue="true"
             app:key="wifi"
-            app:title="홈 wifi 연결시 실내모드 전환"
-            android:defaultValue="true"/>
+            app:title="홈 wifi 연결시 실내모드 전환" />
         <!-- ListPreference, entries : The human-readable array to present as a list. -->
         <!--entryValues The array to find the value to save for a preference when an entry from entries is selected.-->
         <ListPreference
-            app:key="indoor"
-            app:title="실내환경 설정"
             app:entries="@array/indoor_entries"
-            app:entryValues="@array/indoor_values"/>
+            app:entryValues="@array/indoor_values"
+            app:key="indoor"
+            app:title="실내환경 설정" />
         <ListPreference
-            app:key="outdoor"
-            app:title="실외환경 설정"
             app:entries="@array/outdoor_entries"
-            app:entryValues="@array/outdoor_values" />
+            app:entryValues="@array/outdoor_values"
+            app:key="outdoor"
+            app:title="실외환경 설정" />
     </PreferenceCategory>
 
     <PreferenceCategory app:title="핸드폰 알림 설정">
         <Preference
-            app:key=""
-            app:title="소리 설정"/>
+            app:key="sound"
+            app:title="소리 설정" />
         <Preference
-            app:key="output_device"
-            app:title="진동 설정"/>
+            app:key="vibrate"
+            app:title="진동 설정" />
         <Preference
-            app:key="output_device"
-            app:title="시각알림 설정"/>
-        <Preference
-            app:key="output_device"
-            app:title="조명 설정"/>
+            app:key="visual_alarm"
+            app:title="시각알림 설정" />
         <SwitchPreferenceCompat
+            android:defaultValue="true"
             app:key="log"
-            app:title="로그 기록 켜기"
-            android:defaultValue="true"/>
+            app:title="로그 기록 켜기" />
         <!--RingtonePreference
             app:key="ringtone"
             app:title="알림음 설정"
             app:ringtoneType="notification"
             app:persistent="false"
             app:showDefault="false"
-            app:showSilent="true"-->
+            app:showSilent="true"/-->
     </PreferenceCategory>
 
     <PreferenceCategory app:title="기타">
         <Preference
-            app:key="output_device"
-            app:title="개발자에게 소리보내기"/>
+            app:key="send_data"
+            app:title="개발자에게 소리보내기" />
         <Preference
-            app:key="output_device"
-            app:title="FAQ"/>
+            app:key="FAQ"
+            app:title="FAQ" />
         <Preference
-            app:key="output_device"
-            app:title="1:1문의"/>
+            app:key="support"
+            app:title="1:1문의" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="reply"
+            app:entries="@array/reply_entries"
+            app:entryValues="@array/reply_values"
+            app:key="reply"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/messages_header">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="reply"
+            app:entries="@array/reply_entries"
+            app:entryValues="@array/reply_values"
+            app:key="reply"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

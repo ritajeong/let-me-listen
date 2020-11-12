@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="전체보드 관리">
+        <SwitchPreferenceCompat
+            android:key="all_board"
+            android:title="전체 보드"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="개별보드 관리">
+        <SwitchPreferenceCompat
+            android:key="board1"
+            android:title="보드1 작동"
+            android:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            android:key="board2"
+            android:title="보드2 작동"
+            android:defaultValue="true"/>
+        <SwitchPreferenceCompat
+            android:key="board3"
+            android:title="보드3 작동"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="보드 추가">
+        <Preference
+            android:key="new_board"
+            android:title="새 보드 추가"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>
