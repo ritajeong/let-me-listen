@@ -1,12 +1,46 @@
 <resources>
     <!-- Reply Preference -->
-    <string-array name="reply_entries">
-        <item>Reply</item>
-        <item>Reply to all</item>
+    <string-array name="indoor_entries">
+        <item>20dB : 시계초침</item>
+        <item>30dB : 속삭임</item>
+        <item>40dB : 도서관</item>
+        <item>50dB : 사무실</item>
+        <item>60dB : 대화소리</item>
     </string-array>
 
-    <string-array name="reply_values">
-        <item>reply</item>
-        <item>reply_all</item>
+    <string-array name="indoor_values">
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+    </string-array>
+
+    <string-array name="outdoor_entries">
+        <item>20dB : 시계초침</item>
+        <item>30dB : 속삭임</item>
+        <item>40dB : 도서관</item>
+        <item>50dB : 사무실</item>
+        <item>60dB : 대화소리</item>
+        <item>70dB : 전화벨</item>
+        <item>80dB : 지하철</item>
+        <item>90dB : 비명소리</item>
+        <item>100dB : 기찻길</item>
+        <item>1100dB : 경적</item>
+        <item>1200dB : 비행기 이착륙시</item>
+    </string-array>
+
+    <string-array name="outdoor_values">
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+        <item>50</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>100</item>
+        <item>110</item>
+        <item>120</item>
     </string-array>
 </resources>
