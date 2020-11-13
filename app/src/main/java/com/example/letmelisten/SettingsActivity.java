@@ -33,7 +33,7 @@ public class SettingsActivity extends AppCompatActivity implements PreferenceFra
     public boolean onSupportNavigateUp() {
         //기존 설정창으로 나가기 위해 back 버튼으로 나감.
         //fragment 스택이 있을 땐 pop해서 이전 스택으로 가고, 없을땐 activity 를 종료함
-
+        //현재 녹음장치 관리 fragment에서 뒤로가기 누르면 아예 메인activity로 가버림-> 수정해야할것
         if(fragmentManager.getBackStackEntryCount() == 0) {
             finish();
         }else {

@@ -7,11 +7,11 @@
             app:key="mic"
             app:title="휴대폰 마이크 켜기" />
         <Preference
-            app:fragment="com.example.InputSettingsFragment"
+            app:fragment="com.example.letmelisten.InputSettingsFragment"
             app:key="input_device"
             app:title="녹음장치 관리" />
         <Preference
-            app:fragment="com.example.OutputSettingsFragment"
+            app:fragment="com.example.letmelisten.OutputSettingsFragment"
             app:key="output_device"
             app:title="출력장치 관리" />
     </PreferenceCategory>
