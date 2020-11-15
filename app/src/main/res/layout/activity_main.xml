@@ -53,6 +53,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="100dp"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="@string/push_alarm_test"
+            android:onClick="onClick"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -70,5 +78,6 @@
             app:srcCompat="@android:drawable/ic_menu_manage"
             android:contentDescription="@string/setting"
             android:onClick="onClick" />
+
     </LinearLayout>
 </LinearLayout>

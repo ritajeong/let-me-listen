@@ -29,4 +29,5 @@
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>
     <string name="title_activity_output_setting_fragment">OutputSettingFragment</string>
+    <string name="push_alarm_test">push alarm test</string>
 </resources>
