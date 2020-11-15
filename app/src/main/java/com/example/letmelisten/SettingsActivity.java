@@ -1,5 +1,6 @@
 package com.example.letmelisten;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -68,5 +69,6 @@ public class SettingsActivity extends AppCompatActivity implements PreferenceFra
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
         }
     }
+
 
 }

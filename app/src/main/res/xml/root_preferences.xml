@@ -66,7 +66,11 @@
             app:key="FAQ"
             app:title="FAQ" />
         <Preference
-            app:key="support"
-            app:title="1:1문의" />
+            app:key="feedback"
+            app:title="1:1문의">
+            <intent
+                android:action="android.intent.action.SENDTO"
+                android:data="mailto:litch0s2@gmail.com"  />
+        </Preference>
     </PreferenceCategory>
 </PreferenceScreen>
