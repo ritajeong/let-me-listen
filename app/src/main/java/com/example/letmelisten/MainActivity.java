@@ -3,13 +3,17 @@ package com.example.letmelisten;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.Manifest;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -17,11 +21,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     String[] permission_list = {
             Manifest.permission.RECORD_AUDIO
     };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +43,18 @@ public class MainActivity extends AppCompatActivity {
         ImageButton button3 = findViewById(R.id.button3);
         Button button4 = findViewById(R.id.button4); //푸시알림 테스트
 
-
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.button1:
                         break;
                     case R.id.button2:
                         break;
                     case R.id.button3:
-                       Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
-                       startActivity(intent);
+                        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                        startActivity(intent);
                         break;
-                    case R.id.button4:
-                        NotificationManager notificationManager= (NotificationManager)MainActivity.this.getSystemService(MainActivity.this.NOTIFICATION_SERVICE);
-                        Intent intent1 = new Intent(MainActivity.this.getApplicationContext(),MainActivity.class); //인텐트 생성.
-                        Notification.Builder builder = new Notification.Builder(getApplicationContext());
-                        intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        //현재 액티비티를 최상으로 올리고, 최상의 액티비티를 제외한 모든 액티비티를 없앤다.
-                        PendingIntent pendingNotificationIntent = PendingIntent.getActivity( MainActivity.this,0, intent1,PendingIntent.FLAG_UPDATE_CURRENT);
-                        builder.setSmallIcon(R.mipmap.ic_launcher).setTicker("HETT").setWhen(System.currentTimeMillis())
-                                .setNumber(1).setContentTitle("푸쉬 제목").setContentText("푸쉬내용")
-                                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE).setContentIntent(pendingNotificationIntent).setAutoCancel(true).setOngoing(true);
-                        notificationManager.notify(1, builder.build());
-                        break;
-
                 }
             }
         };
@@ -68,7 +62,85 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(onClickListener);
         button2.setOnClickListener(onClickListener);
         button3.setOnClickListener(onClickListener);
-        button4.setOnClickListener(onClickListener);
+        button4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View view){
+                if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.N_MR1) {
+                    /**
+                     * 누가버전 이하 노티처리
+                     */
+                    Toast.makeText(getApplicationContext(), "누가버전이하", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent();
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) getResources().getDrawable(R.mipmap.ic_launcher);
+                    Bitmap bitmap = bitmapDrawable.getBitmap();
+
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext()).
+                            setLargeIcon(bitmap)
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setWhen(System.currentTimeMillis()).
+                                    setShowWhen(true).
+                                    setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_MAX)
+                            .setContentTitle("노티테스트!!")
+                            .setDefaults(Notification.DEFAULT_VIBRATE)
+                            .setFullScreenIntent(pendingIntent, true)
+                            .setContentIntent(pendingIntent);
+
+                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(0, builder.build());
+
+                } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    Toast.makeText(getApplicationContext(), "오레오이상", Toast.LENGTH_SHORT).show();
+                    /**
+                     * 오레오 이상 노티처리
+                     */
+//                    BitmapDrawable bitmapDrawable = (BitmapDrawable)getResources().getDrawable(R.mipmap.ic_launcher);
+//                    Bitmap bitmap = bitmapDrawable.getBitmap();
+                    /**
+                     * 오레오 버전부터 노티를 처리하려면 채널이 존재해야합니다.
+                     */
+
+                    int importance = NotificationManager.IMPORTANCE_HIGH;
+                    String Noti_Channel_ID = "Noti";
+                    String Noti_Channel_Group_ID = "Noti_Group";
+
+                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    NotificationChannel notificationChannel = new NotificationChannel(Noti_Channel_ID, Noti_Channel_Group_ID, importance);
+
+//                    notificationManager.deleteNotificationChannel("testid"); 채널삭제
+
+                    /**
+                     * 채널이 있는지 체크해서 없을경우 만들고 있으면 채널을 재사용합니다.
+                     * 나중에 위로 올리기! 채널은 한번만 생성하면 됨 https://choi3950.tistory.com/9
+                     */
+                    if (notificationManager.getNotificationChannel(Noti_Channel_ID) != null) {
+                        Toast.makeText(getApplicationContext(), "채널이 이미 존재합니다.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "채널이 없어서 만듭니다.", Toast.LENGTH_SHORT).show();
+                        notificationManager.createNotificationChannel(notificationChannel);
+                    }
+
+                    notificationManager.createNotificationChannel(notificationChannel);
+//                    Log.e("로그확인","===="+notificationManager.getNotificationChannel("testid1"));
+//                    notificationManager.getNotificationChannel("testid");
+
+
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), Noti_Channel_ID)
+                            .setLargeIcon(null).setSmallIcon(R.mipmap.ic_launcher)
+                            .setWhen(System.currentTimeMillis()).setShowWhen(true).
+                                    setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_MAX)
+                            .setContentTitle("노티테스트!!");
+//                            .setContentIntent(pendingIntent);
+
+//                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.notify(0, builder.build());
+
+                }
+            }
+        });
     }
 
     public void checkPermission() {
@@ -86,18 +158,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode==0)
-        {
-            for(int i=0; i<grantResults.length; i++)
-            {
+        if (requestCode == 0) {
+            for (int i = 0; i < grantResults.length; i++) {
                 //허용됐다면
-                if(grantResults[i]== PackageManager.PERMISSION_GRANTED){
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"앱 권한을 설정하세요",Toast.LENGTH_LONG).show();
+                if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                } else {
+                    Toast.makeText(getApplicationContext(), "앱 권한을 설정하세요", Toast.LENGTH_LONG).show();
                     finish();
                 }
             }
