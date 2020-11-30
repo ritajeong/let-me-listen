@@ -14,9 +14,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.media.AudioFormat;
+import android.media.AudioRecord;
+import android.media.AudioTrack;
+import android.media.MediaRecorder;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,7 +30,14 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
+    public Iterable<byte[]> streamer = null;
+    int halfSecondBytesNumber = 22050 * 8 / 2;
     String[] permission_list = {
             Manifest.permission.RECORD_AUDIO
     };
@@ -37,6 +49,56 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkPermission();
+        MediaRecord recorder = new MediaRecord();
+        Thread recorderThread  = new Thread(recorder);
+        recorderThread.start();
+
+        streamer = recorder;
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream(halfSecondBytesNumber);
+
+        Thread sendThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for (byte[] bytes : streamer) {
+                        System.out.println(bytes[10]);
+                        /*
+                        if (bytes == null) {
+                            break;
+                        }
+                        try {
+                            buffer.write(bytes);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        if(buffer.size() >= halfSecondBytesNumber) {
+                            byte[] toBeSent = buffer.toByteArray();
+                            int startIndex = 0;
+                            while(startIndex < toBeSent.length) {
+                                int endIndex = Math.min(toBeSent.length, startIndex + 1024*1024);
+
+                                ByteString data = ByteString.copyFrom(toBeSent, startIndex, endIndex);
+
+                                // data 사용
+
+                                startIndex = endIndex;
+                            }
+                            buffer.reset();
+                        }
+                        */
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            });
+
+        sendThread.start();
+
+
+
+
+
 
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
