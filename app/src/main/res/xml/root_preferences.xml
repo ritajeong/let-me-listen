@@ -15,49 +15,6 @@
             app:key="output_device"
             app:title="출력장치 관리" />
     </PreferenceCategory>
-
-    <PreferenceCategory app:title="주변환경 설정">
-        <SwitchPreferenceCompat
-            android:defaultValue="true"
-            app:key="wifi"
-            app:title="홈 wifi 연결시 실내모드 전환" />
-        <!-- ListPreference, entries : The human-readable array to present as a list. -->
-        <!--entryValues The array to find the value to save for a preference when an entry from entries is selected.-->
-        <ListPreference
-            app:entries="@array/indoor_entries"
-            app:entryValues="@array/indoor_values"
-            app:key="indoor"
-            app:title="실내환경 설정" />
-        <ListPreference
-            app:entries="@array/outdoor_entries"
-            app:entryValues="@array/outdoor_values"
-            app:key="outdoor"
-            app:title="실외환경 설정" />
-    </PreferenceCategory>
-
-    <PreferenceCategory app:title="핸드폰 알림 설정">
-        <Preference
-            app:key="sound"
-            app:title="소리 설정" />
-        <Preference
-            app:key="vibrate"
-            app:title="진동 설정" />
-        <Preference
-            app:key="visual_alarm"
-            app:title="시각알림 설정" />
-        <SwitchPreferenceCompat
-            android:defaultValue="true"
-            app:key="log"
-            app:title="로그 기록 켜기" />
-        <!--RingtonePreference
-            app:key="ringtone"
-            app:title="알림음 설정"
-            app:ringtoneType="notification"
-            app:persistent="false"
-            app:showDefault="false"
-            app:showSilent="true"/-->
-    </PreferenceCategory>
-
     <PreferenceCategory app:title="기타">
         <Preference
             app:key="send_data"
@@ -70,7 +27,7 @@
             app:title="1:1문의">
             <intent
                 android:action="android.intent.action.SENDTO"
-                android:data="mailto:litch0s2@gmail.com"  />
+                android:data="mailto:litch0s2@gmail.com" />
         </Preference>
     </PreferenceCategory>
 </PreferenceScreen>

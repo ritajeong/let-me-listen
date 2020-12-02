@@ -60,16 +60,25 @@
             android:layout_height="wrap_content"
             android:text="@string/push_alarm_test"
             android:onClick="onClick"/>
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="sound_setting"
+            android:onClick="onClick"/>
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="alarm_log"
+            android:onClick="onClick"/>
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        >
-
-
+        android:layout_gravity="bottom">
         <ImageButton
             android:id="@+id/button3"
             android:layout_width="46dp"
@@ -78,6 +87,5 @@
             app:srcCompat="@android:drawable/ic_menu_manage"
             android:contentDescription="@string/setting"
             android:onClick="onClick" />
-
     </LinearLayout>
 </LinearLayout>

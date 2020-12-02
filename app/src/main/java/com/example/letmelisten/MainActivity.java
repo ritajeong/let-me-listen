@@ -98,12 +98,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
         ImageButton button3 = findViewById(R.id.button3);
         Button button4 = findViewById(R.id.button4); //푸시알림 테스트
+        Button button5 = findViewById(R.id.button5); //사운드설정창 연결
+        Button button6 = findViewById(R.id.button6); //푸시알림 기록 로그
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
@@ -120,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-
         button1.setOnClickListener(onClickListener);
         button2.setOnClickListener(onClickListener);
         button3.setOnClickListener(onClickListener);
@@ -200,7 +199,25 @@ public class MainActivity extends AppCompatActivity {
 //                    NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                     notificationManager.notify(0, builder.build());
 
+
                 }
+            }
+        });
+
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view){
+                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                intent.putExtra(Settings.EXTRA_CHANNEL_ID, "Noti");
+                startActivity(intent);
+            }
+        });
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View view){
+
             }
         });
     }

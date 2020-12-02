@@ -42,7 +42,7 @@ public class MediaRecord implements Runnable, Iterable<byte[]> {
             try {
                 stream.put(bytes);
             } catch (InterruptedException e) {
-                System.out.println(e);
+//                System.out.println(e);
                 stop();
             }
         }
