@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package letmelisten;
+option java_package = "let.me.listen";
+option java_outer_classname = "LetMeListenProto";
+
+service LetMeListen {
+    rpc Detect(stream AudioStream) returns(stream Result){}
+}
+
+message AudioStream {
+    bytes data = 1;
+    bool task = 2; // True means Indoor Task, False means Outdoor Task. 
+    string key = 3;
+    string app_version = 4;
+}
+
+message Result  {
+    string output = 1;
+}
