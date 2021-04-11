@@ -1,2 +1,4 @@
+include ':jlibrosa-1.0.2-SNAPSHOT-javadoc'
+include ':jlibrosa-1.0.2-SNAPSHOT-jar-with-dependencies'
 include ':app'
 rootProject.name = "letmelisten"
