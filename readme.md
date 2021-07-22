@@ -26,7 +26,7 @@
 
 ## **1.**  **요약**
 
-![img](img/letmelisten/clip_image002.jpg)
+![img](img/clip_image002.jpg)
 
 Figure 1구성도
 
@@ -218,13 +218,13 @@ Figure 1구성도
 
 ## **4.**  **개발방법** 
 
-![img](img/letmelisten/clip_image003.png)
+![img](img/clip_image003.png)
 
 Figure 2 Flow Chart
 
  
 
- ![img](img/letmelisten/clip_image005.png)
+ ![img](img/clip_image005.png)
 
 Figure 3 UML(Use case)
 
@@ -334,7 +334,7 @@ Figure 3 UML(Use case)
 
  
 
-![img](img/letmelisten/clip_image007.png)![img](img/letmelisten/clip_image009.png) 
+![img](img/clip_image007.png)![img](img/clip_image009.png) 
 
 **F1 score** – Precision과 Recall의 조화평균 
 
@@ -342,7 +342,7 @@ Figure 3 UML(Use case)
 
  
 
-![img](img/letmelisten/clip_image011.png) 
+![img](img/clip_image011.png) 
 
 **F1 score를 평가 기준으로 선택한 이유** 
 
